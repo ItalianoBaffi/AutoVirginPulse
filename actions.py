@@ -151,19 +151,74 @@ def click_healthy_habits(driver):
     hover = ActionChains(driver)
     hover.move_to_element(driver.find_element_by_id('track-sleep'))
     hover.pause(1)
-    hover.click()
+    hover.click().perform()
 
-    driver.find_element_by_id('numberOfSteps').send_keys(str(random.randint(140,170)*100))
+    driver.find_element_by_id('numberOfSteps').send_keys(str(random.randint(130,160)*100))
     driver.execute_script("document.getElementById('track-steps').disabled = false;")
     hover.move_to_element(driver.find_element_by_id('track-steps'))
     hover.pause(1)
-    hover.click()
+    hover.click().perform()
 
 
 def browse_recipes(driver):
-    pass
+    print('---Browse Recipes---')
+    print('Navigating to how to earn page')
+
+    home_menu = driver.find_elements_by_class_name("menu-link")
+    hover = ActionChains(driver)
+    hover.move_to_element(home_menu[0]).pause(1)
+    hover.move_to_element(home_menu[5]).pause(1).click().perform()
+    
+    hover.pause(10)
+    hover.move_to_element(driver.find_elements_by_class_name("howtoearn-activities-display")[8].find_elements_by_class_name("howtoearn-activity-name")[0].find_elements_by_css_selector("*")[0]).pause(1).click().perform()
+    hover.pause(10)
+    driver.execute_script("window.history.go(-1)")
 
 def count_calories(driver):
+    print('---Count Calories---')
+    print('Navigating to how to earn page')
+
+    home_menu = driver.find_elements_by_class_name("menu-link")
+    hover = ActionChains(driver)
+    hover.move_to_element(home_menu[0]).pause(1)
+    hover.move_to_element(home_menu[5]).pause(1).click().perform()
+    
+    hover.pause(10)
+    hover.move_to_element(driver.find_elements_by_class_name("howtoearn-activities-display")[8].find_elements_by_class_name("howtoearn-activity-name")[1].find_elements_by_css_selector("*")[0]).pause(1).click().perform()
+
+    hover.pause(10)
+    hover.move_to_element(driver.find_element_by_id("ember1782")).pause(1).click().perform()
+
+    hover.pause(5)
+    hover.move_to_element(driver.find_elements_by_class_name("add_food")[0]).pause(1).click().perform()
+    hover.pause(5)
+    hover.move_to_element(driver.find_element_by_id("meals_tab").find_elements_by_css_selector("*")[0]).pause(1).click().perform()
+    hover.pause(5)
+    hover.move_to_element(driver.find_element_by_id("favorites_25_checked")).pause(1).click().perform()
+    hover.move_to_element(driver.find_element_by_id("add_button_en")).pause(1).click().perform()
+
+    hover.pause(5)
+    hover.move_to_element(driver.find_elements_by_class_name("add_food")[1]).pause(1).click().perform()
+    hover.pause(5)
+    hover.move_to_element(driver.find_element_by_id("favorites_17_checked")).pause(1).click().perform()
+    hover.move_to_element(driver.find_element_by_id("favorites_18_checked")).pause(1).click().perform()
+    hover.move_to_element(driver.find_element_by_id("add_button_en")).pause(1).click().perform()
+
+    hover.pause(5)
+    hover.move_to_element(driver.find_elements_by_class_name("add_food")[2]).pause(1).click().perform()
+    hover.pause(5)
+    hover.move_to_element(driver.find_element_by_id("meals_tab").find_elements_by_css_selector("*")[0]).pause(1).click().perform()
+    hover.pause(5)
+    hover.move_to_element(driver.find_element_by_id("favorites_27_checked")).pause(1).click().perform()
+    hover.move_to_element(driver.find_element_by_id("add_button_en")).pause(1).click().perform()
+
+    hover.pause(5)
+    hover.move_to_element(driver.find_elements_by_class_name("add_food")[3]).pause(1).click().perform()
+    hover.pause(5)
+    hover.move_to_element(driver.find_element_by_id("favorites_12_checked")).pause(1).click().perform()
+    hover.move_to_element(driver.find_element_by_id("add_button_en")).pause(1).click().perform()
+
+def keep_alive(driver):
     pass
 
 def login(driver, username, password):
